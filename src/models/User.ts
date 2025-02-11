@@ -4,9 +4,7 @@ import axios, { type AxiosResponse } from 'axios';
 import { Eventing } from './Eventing';
 
 export class User {
-  events: Eventing = new Eventing();
-
-  constructor(private data: UserProps) {}
+  constructor(private data: UserProps, public events: Eventing = new Eventing()) {}
 
   get(propName: keyof UserProps): string | number | undefined {
     return this.data[propName];
