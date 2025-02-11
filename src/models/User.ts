@@ -1,4 +1,6 @@
 import type { Callback, UserProps } from '@libs/types';
+import axios, { type AxiosResponse } from 'axios';
+import { BASE_URL } from '@libs/constants';
 
 export class User {
   events: { [key: string]: Callback[] } = {};
@@ -24,6 +26,12 @@ export class User {
 
     handlers.forEach((callback) => {
       callback();
+    });
+  }
+
+  fetch(): void {
+    axios.get(`${BASE_URL}/users/${this.get('id')}`).then((response: AxiosResponse): void => {
+      this.set(response.data);
     });
   }
 }
