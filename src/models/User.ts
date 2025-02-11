@@ -3,7 +3,7 @@ import type { UserProps } from '@libs/types';
 export class User {
   constructor(private data: UserProps) {}
 
-  get(propName: keyof UserProps): string | number {
+  get(propName: keyof UserProps): string | number | undefined {
     return this.data[propName];
   }
 
