@@ -15,3 +15,6 @@ user.on('change', () => {
 });
 
 console.log(user);
+
+user.trigger('change');
+user.trigger('update');

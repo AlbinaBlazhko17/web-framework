@@ -16,4 +16,14 @@ export class User {
   on(eventName: string, callback: Callback) {
     this.events[eventName] = [...(this.events[eventName] || []), callback];
   }
+
+  trigger(eventName: string): void {
+    const handlers = this.events[eventName];
+
+    if (!handlers || handlers.length === 0) return;
+
+    handlers.forEach((callback) => {
+      callback();
+    });
+  }
 }
