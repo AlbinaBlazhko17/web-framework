@@ -1,9 +1,10 @@
-import type { Callback, UserProps } from '@libs/types';
-import axios, { type AxiosResponse } from 'axios';
 import { BASE_URL } from '@libs/constants';
+import type { UserProps } from '@libs/types';
+import axios, { type AxiosResponse } from 'axios';
+import { Eventing } from './Eventing';
 
 export class User {
-  events: { [key: string]: Callback[] } = {};
+  events: Eventing = new Eventing();
 
   constructor(private data: UserProps) {}
 
@@ -13,20 +14,6 @@ export class User {
 
   set(update: UserProps): void {
     Object.assign(this.data, update);
-  }
-
-  on(eventName: string, callback: Callback) {
-    this.events[eventName] = [...(this.events[eventName] || []), callback];
-  }
-
-  trigger(eventName: string): void {
-    const handlers = this.events[eventName];
-
-    if (!handlers || handlers.length === 0) return;
-
-    handlers.forEach((callback) => {
-      callback();
-    });
   }
 
   fetch(): void {
