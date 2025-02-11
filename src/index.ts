@@ -2,5 +2,16 @@ import { User } from '@models/User';
 
 const user = new User({ name: 'John Doe', age: 30 });
 
-user.set({ name: 'New name', age: 12 });
-console.log(user.get('name')); // New name
+user.on('change', () => {
+  console.log('Change #1');
+});
+
+user.on('update', () => {
+  console.log('Update #1');
+});
+
+user.on('change', () => {
+  console.log('Change #2');
+});
+
+console.log(user);
