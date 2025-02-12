@@ -1,7 +1,13 @@
 import { User } from '@models/User';
 
-const user = new User({ name: 'New user', age: 0 });
+const user = new User({ id: 1, name: 'New user', age: 0 });
 
-user.sync.fetch(1).then((response) => {
-  console.log(response.data);
+user.on('change', () => {
+  console.log('User was changed');
 });
+
+user.set({ name: 'Updated user', age: 1 });
+
+user.fetch();
+
+console.log(user);

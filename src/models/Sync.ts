@@ -8,13 +8,13 @@ export class Sync<T extends SyncData> {
     return axios.get(`${this.baseUrl}${this.route}/${id}`);
   }
 
-  save(data: T): void {
+  save(data: T): AxiosPromise {
     const id = data.id;
 
     if (id) {
-      axios.put(`${this.baseUrl}${this.route}/${id}`, data);
+      return axios.put(`${this.baseUrl}${this.route}/${id}`, data);
     } else {
-      axios.post(`${this.baseUrl}${this.route}`, data);
+      return axios.post(`${this.baseUrl}${this.route}`, data);
     }
   }
 }
