@@ -1,10 +1,9 @@
-import { BASE_URL } from '@libs/constants';
-import { Collection } from '@models/Collection';
+import { User } from '@/models';
 
-const collection = new Collection(BASE_URL, '/users');
+const userCollection = User.buildUserCollection();
 
-collection.on('change', () => {
-  console.log(collection);
+userCollection.on('change', () => {
+  console.log(userCollection);
 });
 
-collection.fetch();
+userCollection.fetch();
