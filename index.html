@@ -6,6 +6,93 @@
     <title>Web framework</title>
   </head>
   <body>
+    <style>
+      body {
+        background-color: #1a1423;
+        color: #eee5e9;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      #root {
+        width: 100%;
+        max-width: 30vw;
+      }
+
+      .user-card {
+        background-color: #221a2f;
+        border-radius: 24px;
+        padding: 40px;
+
+        box-shadow: 0 0 20px rgba(238, 229, 233, 0.5);
+        transition: box-shadow 0.3s ease;
+      }
+
+      .user-card:hover {
+        box-shadow: 0 0 30px rgba(238, 229, 233, 0.8);
+      }
+
+      h1 {
+        color: #e0ff4f;
+        margin: 0;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      .user-show,
+      .user-form {
+        margin-bottom: 20px;
+      }
+
+      input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        background-color: #2a2a2a;
+        border: none;
+        border-radius: 5px;
+        color: #eee5e9;
+        border: 1px solid transparent;
+      }
+
+      input:focus {
+        outline: none;
+        border: 1px solid #cdf617;
+      }
+
+      button {
+        background-color: #e0ff4f;
+        color: #0c0f00;
+        border: none;
+        padding: 10px 15px;
+        margin: 10px 10px 10px 0;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      button:hover {
+        background-color: #cdf617;
+      }
+
+      .save-user {
+        background-color: #a4031f;
+        color: #eee5e9;
+      }
+
+      .save-user:hover {
+        background-color: #962538;
+      }
+
+      .user-data {
+        margin-bottom: 10px;
+      }
+    </style>
     <div id="root"></div>
     <script type="module" src="./src/index.ts"></script>
   </body>

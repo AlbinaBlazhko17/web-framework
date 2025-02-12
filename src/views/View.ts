@@ -8,15 +8,16 @@ export abstract class View<T extends Model<K>, K extends IdObject> {
     this.bindModel();
   }
 
+  abstract template(): string;
+
   eventsMap(): { [key: string]: Callback } {
     return {};
   }
-
-  abstract template(): string;
-
   regionsMap(): { [key: string]: string } {
     return {};
   }
+
+  onRender(): void {}
 
   bindModel(): void {
     this.model.on('change', () => {
@@ -56,6 +57,8 @@ export abstract class View<T extends Model<K>, K extends IdObject> {
 
     this.mapRegions(templateElement.content);
     this.bindEvents(templateElement.content);
+    this.onRender();
+
     this.parent.append(templateElement.content);
   }
 }

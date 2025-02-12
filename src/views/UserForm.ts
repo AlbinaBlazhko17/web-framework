@@ -36,13 +36,11 @@ export class UserForm extends View<User, IUserProps> {
 
   template(): string {
     return `
-      <div>
-        <h1>User Form</h1>
-        <input placeholder='${this.model.get('name')}' />
+        <h2>Form</h2>
+        <input type="text" placeholder='${this.model.get('name')}' id="nameInput" />
         <button class="set-name">Change name</button>
         <button class='set-age'>Set random age</button>
         <button class='save-user'>Save user</button>
-      </div>
     `;
   }
 }

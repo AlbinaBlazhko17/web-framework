@@ -9,11 +9,9 @@ export class UserShow extends View<User, IUserProps> {
 
   template(): string {
     return `
-      <div>
-        <h1>User Detail</h1>
-        <div>User Name:${this.model.get('name')}</div>
-        <div>User Age:${this.model.get('age')}</div>
-      </div>
+        <h2>Details</h2>
+        <div class="user-data"> User Name: <span id="userName">NAME</span></div>
+        <div class="user-data">User Age: <span id="userAge">20</span></div>
     `;
   }
 }

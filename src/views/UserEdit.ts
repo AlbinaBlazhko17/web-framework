@@ -19,7 +19,8 @@ export class UserEdit extends View<User, IUserProps> {
 
   template(): string {
     return `
-      <div>
+      <div class="user-card">
+        <h1>User</h1>
         <div class="user-show"></div>
         <div class="user-form"></div>
       </div>
