@@ -1,7 +1,7 @@
-import type { SyncData } from '@libs/types';
+import type { IdObject } from '@libs/types';
 import axios, { type AxiosPromise } from 'axios';
 
-export class Sync<T extends SyncData> {
+export class ApiSync<T extends IdObject> {
   constructor(private baseUrl: string, private route: string) {}
 
   fetch(id: number): AxiosPromise {
