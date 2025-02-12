@@ -1,13 +1,10 @@
-import { User } from '@models/User';
+import { BASE_URL } from '@libs/constants';
+import { Collection } from '@models/Collection';
 
-const user = User.buildUser({ name: 'Name', age: 0 });
+const collection = new Collection(BASE_URL, '/users');
 
-user.on('change', () => {
-  console.log('User was changed');
+collection.on('change', () => {
+  console.log(collection);
 });
 
-user.set({ id: 1, name: 'Updated user', age: 1 });
-
-user.fetch();
-
-console.log(user);
+collection.fetch();
