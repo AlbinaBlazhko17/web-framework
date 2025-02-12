@@ -1,32 +1,18 @@
-import { BASE_URL } from '@libs/constants';
-import type { UserProps } from '@libs/types';
-import axios, { type AxiosResponse } from 'axios';
+import type { IUserProps } from '@libs/types';
 import { Eventing } from './Eventing';
+import { Sync } from './Sync';
+import { BASE_URL } from '@libs/constants';
 
 export class User {
-  constructor(private data: UserProps, public events: Eventing = new Eventing()) {}
+  public sync: Sync<IUserProps> = new Sync<IUserProps>(BASE_URL, '/users');
 
-  get(propName: keyof UserProps): string | number | undefined {
+  constructor(private data: IUserProps, public events: Eventing = new Eventing()) {}
+
+  get(propName: keyof IUserProps): string | number | undefined {
     return this.data[propName];
   }
 
-  set(update: UserProps): void {
+  set(update: IUserProps): void {
     Object.assign(this.data, update);
-  }
-
-  fetch(): void {
-    axios.get(`${BASE_URL}/users/${this.get('id')}`).then((response: AxiosResponse): void => {
-      this.set(response.data);
-    });
-  }
-
-  save(): void {
-    const id = this.get('id');
-
-    if (id) {
-      axios.put(`${BASE_URL}/users/${id}`, this.data);
-    } else {
-      axios.post(`${BASE_URL}/users`, this.data);
-    }
   }
 }
