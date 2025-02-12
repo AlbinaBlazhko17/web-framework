@@ -1,8 +1,8 @@
 import type { User } from '@/models';
 import { View } from './View';
-import type { Callback } from '@/libs/types';
+import type { Callback, IUserProps } from '@/libs/types';
 
-export class UserForm extends View {
+export class UserForm extends View<User, IUserProps> {
   constructor(public parent: Element, public model: User) {
     super(parent, model);
   }

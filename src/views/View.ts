@@ -1,8 +1,8 @@
-import type { Callback } from '@/libs/types';
-import type { User } from '@/models';
+import type { Callback, IdObject } from '@/libs/types';
+import { Model } from '@/models';
 
-export abstract class View {
-  constructor(public parent: Element, public model: User) {
+export abstract class View<T extends Model<K>, K extends IdObject> {
+  constructor(public parent: Element, public model: T) {
     this.bindModel();
   }
 
