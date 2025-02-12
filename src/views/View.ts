@@ -13,6 +13,7 @@ export abstract class View<T extends Model<K>, K extends IdObject> {
   eventsMap(): { [key: string]: Callback } {
     return {};
   }
+
   regionsMap(): { [key: string]: string } {
     return {};
   }
@@ -55,8 +56,9 @@ export abstract class View<T extends Model<K>, K extends IdObject> {
     const templateElement = document.createElement('template');
     templateElement.innerHTML = this.template();
 
-    this.mapRegions(templateElement.content);
     this.bindEvents(templateElement.content);
+    this.mapRegions(templateElement.content);
+
     this.onRender();
 
     this.parent.append(templateElement.content);

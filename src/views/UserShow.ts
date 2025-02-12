@@ -10,8 +10,8 @@ export class UserShow extends View<User, IUserProps> {
   template(): string {
     return `
         <h2>Details</h2>
-        <div class="user-data"> User Name: <span id="userName">NAME</span></div>
-        <div class="user-data">User Age: <span id="userAge">20</span></div>
+        <div class="user-data"> User Name: <span id="userName">${this.model.get('name')}</span></div>
+        <div class="user-data">User Age: <span id="userAge">${this.model.get('age')}</span></div>
     `;
   }
 }

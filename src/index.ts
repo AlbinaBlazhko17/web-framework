@@ -1,4 +1,3 @@
-import { UserForm } from './views';
 import { User } from './models';
 import { UserEdit } from './views/UserEdit';
 
