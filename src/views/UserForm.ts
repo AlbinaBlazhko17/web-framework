@@ -1,17 +1,13 @@
 import type { User } from '@/models';
+import { View } from './View';
+import type { Callback } from '@/libs/types';
 
-export class UserForm {
+export class UserForm extends View {
   constructor(public parent: Element, public model: User) {
-    this.bindModel();
+    super(parent, model);
   }
 
-  bindModel(): void {
-    this.model.on('change', () => {
-      this.render();
-    });
-  }
-
-  eventsMap(): { [key: string]: () => void } {
+  eventsMap(): { [key: string]: Callback } {
     return {
       'click:.set-name': this.onSetNameClick,
       'click:.set-age': this.onSetAgeClick,
@@ -44,26 +40,5 @@ export class UserForm {
         <button class='set-age'>Set random age</button>
       </div>
     `;
-  }
-
-  bindEvents(fragment: DocumentFragment): void {
-    const eventsMap = this.eventsMap();
-
-    for (let eventKey in eventsMap) {
-      const [eventName, selector] = eventKey.split(':');
-      fragment.querySelectorAll(selector).forEach((element) => {
-        element.addEventListener(eventName, eventsMap[eventKey]);
-      });
-    }
-  }
-
-  render(): void {
-    this.parent.innerHTML = '';
-
-    const templateElement = document.createElement('template');
-    templateElement.innerHTML = this.template();
-
-    this.bindEvents(templateElement.content);
-    this.parent.append(templateElement.content);
   }
 }
